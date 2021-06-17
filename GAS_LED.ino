@@ -10,39 +10,27 @@ void setup() {
 }
 int OnOff = 0;
 void loop() {
+  int readV = digitalRead(BTN);
   int val = analogRead(GAS);
   
-  if(BTN == HIGH){
+  if(readV == HIGH){
     OnOff = 1 - OnOff;
     Serial.print(OnOff);
+    Serial.print(" ");
     delay(400);
   }
   
   if(OnOff == 1){
-    digitalWrite(LED, HIGH);
+    if(val >= 150){
+      digitalWrite(LED, LOW);
+    }
+    else digitalWrite(LED, HIGH);
   }
   
   else{
     digitalWrite(LED, LOW);
-    if(val >= 160){
-      digitalWrite(LED, HIGH);
-    }
+    
   }
-
-
-  if(OnOff == 1){
-    if(BTN == HIGH){
-      OnOff = 1 - OnOff;
-    }
-    else{
-      digitalWrite(LED, HIGH);
-    }
-  }
-  else{
-    digitalWrite(LED, LOW);
-  }
-
   
   Serial.println(val);
-  delay(1000);
 }
