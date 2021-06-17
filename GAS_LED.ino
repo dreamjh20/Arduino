@@ -23,6 +23,8 @@ void loop() {
   if(OnOff == 1){
     if(val >= 150){
       digitalWrite(LED, LOW);
+      OnOff = 0;
+      delay(10000);
     }
     else digitalWrite(LED, HIGH);
   }
