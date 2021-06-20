@@ -1,12 +1,13 @@
 #define GAS 0
 #define LED 8
 #define BTN 7
+#define BUZZER 11
 void setup() {
   Serial.begin(9600);
   pinMode(LED, OUTPUT);
   pinMode(GAS, INPUT);
   pinMode(BTN, INPUT);
-  
+  pinMode(BUZZER, OUTPUT);  
 }
 int OnOff = 0;
 void loop() {
@@ -24,8 +25,19 @@ void loop() {
     if(val >= 150){
       digitalWrite(LED, LOW);
       OnOff = 0;
-      delay(10000);
+      for(int m = 0; m < 5; m++){
+        for (int hz = 300; hz <= 1000; hz++){
+          tone(BUZZER, hz);
+          delay(2);
+        }
+  
+       for (int hz = 1000; hz >= 300; hz--){
+          tone(BUZZER, hz);
+          delay(2);
+          }
+      noTone(BUZZER);
     }
+    
     else digitalWrite(LED, HIGH);
   }
   
@@ -33,6 +45,7 @@ void loop() {
     digitalWrite(LED, LOW);
     
   }
+
   
   Serial.println(val);
 }
