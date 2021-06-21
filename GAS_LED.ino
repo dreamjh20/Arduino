@@ -2,6 +2,7 @@
 #define LED 8
 #define BTN 7
 #define BUZZER 11
+
 void setup() {
   Serial.begin(9600);
   pinMode(LED, OUTPUT);
@@ -36,8 +37,8 @@ void loop() {
           delay(2);
           }
       noTone(BUZZER);
+      }
     }
-    
     else digitalWrite(LED, HIGH);
   }
   
