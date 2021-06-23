@@ -3,7 +3,8 @@
 #define BTN 7
 #define BUZZER 11
 
-void setup() {
+void setup() 
+{
   Serial.begin(9600);
   pinMode(LED, OUTPUT);
   pinMode(GAS, INPUT);
@@ -11,7 +12,8 @@ void setup() {
   pinMode(BUZZER, OUTPUT);  
 }
 int OnOff = 0;
-void loop() {
+void loop() 
+  {
   int readV = digitalRead(BTN);
   int val = analogRead(GAS);
   
@@ -47,6 +49,5 @@ void loop() {
     
   }
 
-  
   Serial.println(val);
 }
