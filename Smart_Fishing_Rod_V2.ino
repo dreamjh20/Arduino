@@ -26,7 +26,6 @@ void loop() {
   if(up == HIGH)
   {
     led_2 = 1 - led_2;
-    
   }
   Serial.print("----");
   Serial.print(up);
