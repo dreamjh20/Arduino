@@ -7,6 +7,7 @@ void setup() {
   pinMode(Led, OUTPUT); 
   digitalWrite(Led ,LOW);    
 }
+
 void loop( ) {
   if (digitalRead(PIR) == HIGH) {        
     Serial.println("SENSOR ON");     
