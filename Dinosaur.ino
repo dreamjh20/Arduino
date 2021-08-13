@@ -13,8 +13,12 @@ void loop() {
   int cds;
   cds = analogRead(CDS);
   Serial.println(cds);
-  sv.write(7);
-  delay(400);                             
-  sv.write(15);
-  delay(700);
+  if(cds < 25)
+  {
+      delay(100);
+      sv.write(7);
+      delay(400);                             
+      sv.write(15);
+  }
+
 }
