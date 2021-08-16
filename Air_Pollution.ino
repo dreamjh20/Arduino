@@ -2,10 +2,8 @@
 #define Green 11
 #define Blue 10
 
-
 int measurePin = 0;     // measurePin을 0으로 설정합니다.
 int ledPower = 2;       // ledPower를 2로 설정합니다.
-
   
 int samplingTime = 280; // samplingTime을 280으로 설정합니다.
 int deltaTime = 40;     // deltaTime을 40으로 설정합니다.
@@ -23,10 +21,7 @@ void setup(){
   pinMode(Blue, OUTPUT);
 }
   
-void loop(){
-  
-  
-  
+void loop(){  
   digitalWrite(ledPower,LOW);                // ledPower를 LOW로 설정합니다.
   delayMicroseconds(samplingTime);           // samplingTime(280) 마이크로초만큼 지연합니다. 
   
