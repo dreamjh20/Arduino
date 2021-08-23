@@ -32,10 +32,6 @@
 /* Comment this out to disable prints and save space */
 #define BLYNK_PRINT Serial
 
-/* Fill-in your Template ID (only if using Blynk.Cloud) */
-//#define BLYNK_TEMPLATE_ID   "HAv8MAVIyzS71MEtL0inCHeGbAkZ_zUd"
-
-
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 #include <DHT.h>
@@ -44,8 +40,6 @@
 // Go to the Project Settings (nut icon).
 char auth[] = "HAv8MAVIyzS71MEtL0inCHeGbAkZ_zUd";
 
-// Your WiFi credentials.
-// Set password to "" for open networks.
 char ssid[] = "Moon";
 char pass[] = "mmmmmmmm";
 
@@ -58,7 +52,7 @@ BlynkTimer timer;
 void sendSensor()
 {
   float h = dht.readHumidity();
-  float t = dht.readTemperature(); // or dht.readTemperature(true) for Fahrenheit
+  float t = dht.readTemperature();
  
   if (isnan(h) || isnan(t)) {
     Serial.println("Failed to read from DHT sensor!");
