@@ -36,8 +36,6 @@
 #include <BlynkSimpleEsp8266.h>
 #include <DHT.h>
 
-// You should get Auth Token in the Blynk App.
-// Go to the Project Settings (nut icon).
 char auth[] = "HAv8MAVIyzS71MEtL0inCHeGbAkZ_zUd";
 
 char ssid[] = "Moon";
