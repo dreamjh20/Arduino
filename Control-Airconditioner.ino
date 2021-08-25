@@ -32,14 +32,24 @@
 /* Comment this out to disable prints and save space */
 #define BLYNK_PRINT Serial
 
+/* Fill-in your Template ID (only if using Blynk.Cloud) */
+//#define BLYNK_TEMPLATE_ID   "HAv8MAVIyzS71MEtL0inCHeGbAkZ_zUd"
+
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 #include <DHT.h>
+#include <Servo.h>
 
+Servo myservo;
+
+// You should get Auth Token in the Blynk App.
+// Go to the Project Settings (nut icon).
 char auth[] = "HAv8MAVIyzS71MEtL0inCHeGbAkZ_zUd";
 
+// Your WiFi credentials.
+// Set password to "" for open networks.
 char ssid[] = "Moon";
-char pass[] = "mmmmmmmm";
+char pass[] = "moontong";
 
 #define DHTPIN 2
 #define DHTTYPE DHT11
@@ -50,7 +60,7 @@ BlynkTimer timer;
 void sendSensor()
 {
   float h = dht.readHumidity();
-  float t = dht.readTemperature();
+  float t = dht.readTemperature(); // or dht.readTemperature(true) for Fahrenheit
  
   if (isnan(h) || isnan(t)) {
     Serial.println("Failed to read from DHT sensor!");
@@ -60,7 +70,7 @@ void sendSensor()
   Blynk.virtualWrite(V5, t);
   Blynk.virtualWrite(V6, h);
 }
-  
+
 void setup()
 {
   // Debug console
@@ -68,8 +78,17 @@ void setup()
 
   Blynk.begin(auth, ssid, pass);
   dht.begin();
- 
+  myservo.attach(D2);
+  
+  delay(2000);
   timer.setInterval(1000L, sendSensor);
+}
+
+BLYNK_WRITE(V0){ 
+  
+  myservo.write(90);
+  delay(500);
+  myservo.write(0);
 }
 
 void loop()
