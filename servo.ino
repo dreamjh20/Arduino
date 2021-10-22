@@ -2,7 +2,6 @@
 
 int input_data;
 
-
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
